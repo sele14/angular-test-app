@@ -1,3 +1,6 @@
-<app-cool-component></app-cool-component>
-<app-userslist></app-userslist>
+<app-userslist
+  [users]="users"
+  (removeUser)="removeUser($event)"
+  (addUserEvent)="addUser($event)"
+></app-userslist>
 <router-outlet></router-outlet>

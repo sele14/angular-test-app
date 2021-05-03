@@ -26,7 +26,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+
     // margin-left: 4rem;
     // margin-right: 4rem;
 }
@@ -36,3 +36,44 @@ h1 {
     margin-top: -8rem;
 }
 
+.userslist-container {
+  display: flex;
+  // border: 1px solid red;
+  padding: 2rem;
+}
+
+.input-box {
+  padding-right: 2rem;
+  // border: 1px solid blue;
+}
+
+.user-list {
+  // border: 1px solid greenyellow;
+}
+
+.username {
+  position: relative;
+  // border: 1px solid rgb(0, 255, 251);
+  padding: 1rem;
+}
+
+.btn {
+  background-color: #00b7ff;
+  border: none;
+  color: white;
+  cursor: pointer;
+  // display: block;
+  font-family: inherit;
+  // font-size: 1.1rem;
+  // width: 100%;
+  padding: 0.15rem;
+}
+
+.btn:hover {
+  background-color: #008fc7;
+}
+
+.btn:focus {
+  background-color: #008fc7;
+  outline: none;
+}

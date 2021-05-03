@@ -1,11 +1,26 @@
 <div class="userslist-container">
-  <input type="text" (change)="setNewUserName($any($event).target.value)" />
-  <button (click)="addUser()">Add User</button>
+  <!-- input field -->
+  <div class="input-box">
+    <input
+      type="text"
+      (change)="setNewUserName($any($event).target.value)"
+      [value]="newUserName"
+    />
+    <button class="btn" (click)="addUser()">Add User</button>
+  </div>
 
-  <div *ngFor="let user of users">
-    {{ user.name }}
+  <!-- list of users -->
+  <div class="user-list">
+    <h3>Users</h3>
+    <div *ngFor="let user of users">
 
-    <!-- attach event -->
-    <button><span (click)="removeUser(user.id)"> Remove </span></button>
+      <div class="username">
+        {{ user.name }}
+        <!-- attach event -->
+        <button class="btn">
+          <span (click)="removeUser.emit(user.id)"> Remove </span>
+        </button>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,42 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { UserInterface } from '../types/user';
 
 @Component({
   selector: 'app-userslist',
   templateUrl: './userslist.component.html',
   styleUrls: ['./userslist.component.scss']
 })
-export class UserslistComponent implements OnInit {
+export class UserslistComponent {
+  @Input() users: UserInterface[]
+  @Output() removeUser = new EventEmitter()
+  @Output() addUserEvent = new EventEmitter()
 
   // declare new user variable
   newUserName: string = "";
   // declare var to fill if user already exists
   newUserErr: string = "";
 
-  // dummy data
-  users = [
-    {
-      id: 1,
-      name: "user1",
-    },
-    {
-      id: 2,
-      name: "user2",
-    },
-    {
-      id: 3,
-      name: "user3",
-    },
-    {
-      id: 4,
-      name: "user4",
-    }
-  ]
-
-  constructor() { }
-
-  removeUser(id: number): void {
-    this.users = this.users.filter(users => users.id !== id)
-  }
 
   setNewUserName(userName: string): void {
     // store new user
@@ -45,23 +24,11 @@ export class UserslistComponent implements OnInit {
 
 
   addUser(): void {
-    console.log('addUser: ', this.newUserName)
+    // send new username to addUserEvent (function inside app.component.ts)
+    this.addUserEvent.emit(this.newUserName)
 
-    // create random id
-    // const uniqueId = this.users.length
-    const uniqueId = Math.random()
-
-    // create object for new user
-    const newUser = {
-      id: uniqueId,
-      name: this.newUserName
-    }
-    // add new user to users array (alert if already exists)
-    if(this.users.map(a => a.name).includes(newUser.name)){
-      alert("A user with that name already exists!")
-    } else{
-      this.users.push(newUser)
-    }
+    // set newUserName to empty (clear after use)
+    this.newUserName = ""
   }
 
   ngOnInit(): void {
