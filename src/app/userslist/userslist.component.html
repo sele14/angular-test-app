@@ -1,0 +1,11 @@
+<div class="userslist-container">
+  <input type="text" (change)="setNewUserName($any($event).target.value)" />
+  <button (click)="addUser()">Add User</button>
+
+  <div *ngFor="let user of users">
+    {{ user.name }}
+
+    <!-- attach event -->
+    <button><span (click)="removeUser(user.id)"> Remove </span></button>
+  </div>
+</div>
